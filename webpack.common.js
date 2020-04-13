@@ -10,16 +10,37 @@ module.exports = {
         chunkLoadTimeout: 30000
     },
     module: {
-        rules: [{
-            test: /\.css$/,
-            use: [{
-                    loader: "style-loader"
-                },
-                {
-                    loader: "css-loader"
-                }
-            ]
-        }]
+        rules: [
+            /* rules buat component */
+            {
+                test: /\.css$/i,
+                exclude: /styles/,
+                use: ["to-string-loader", "css-loader"]
+            },
+            /* rules buat global style */
+            {
+                test: /\.css$/i,
+                include: /styles/,
+                use: ["style-loader", "css-loader"]
+            },
+            {
+                test: /\.scss$/,
+                loader: 'style-loader!css-loader!sass-loader'
+              },
+            {
+                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                use: [
+                  {
+                    loader: 'file-loader',
+                    options: {
+                      name: '[name].[ext]',
+                      outputPath: 'fonts/'
+                    }
+                  }
+                ]
+              },
+              
+        ]
     },
     plugins: [
         new HtmlWebpackPlugin({

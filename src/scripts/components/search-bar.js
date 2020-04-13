@@ -1,3 +1,5 @@
+import css from "bootstrap/dist/css/bootstrap.min.css";
+
 class SearchBar extends HTMLElement {
 
     constructor() {
@@ -60,7 +62,6 @@ class SearchBar extends HTMLElement {
            cursor: pointer;
            margin-left: auto;
            padding: 16px;
-           background-color: cornflowerblue;
            color: white;
            border: 0;
            text-transform: uppercase;
@@ -81,10 +82,12 @@ class SearchBar extends HTMLElement {
                width: 100%;
            }
        }
+
+       ${css}
        </style>
        <div id="search-container" class="search-container">
            <input placeholder="Search Movie" id="searchElement" type="search">
-           <button id="searchButtonElement" type="submit">Search</button>
+           <button class="btn btn-primary" id="searchButtonElement" type="submit">Search</button>
        </div>
        `;
 

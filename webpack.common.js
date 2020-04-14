@@ -6,8 +6,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "[chunkhash].bundle.js",
-        chunkFilename: "[id].js",
-        chunkLoadTimeout: 30000
+        //chunkFilename: "[id].js",
+        //chunkLoadTimeout: 30000
     },
     module: {
         rules: [
@@ -26,7 +26,7 @@ module.exports = {
             {
                 test: /\.scss$/,
                 loader: 'style-loader!css-loader!sass-loader'
-              },
+            },
               
         ]
     },

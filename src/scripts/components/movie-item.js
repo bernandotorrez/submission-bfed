@@ -13,8 +13,23 @@ class MovieItem extends HTMLElement {
         this.render();
     }
 
-    render() {
-        let release_date = this._movie.release_date.split("-").reverse().join("-");
+    async genre(param) {
+        const response = await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=bd73463666208eb2ab9681ca1337b828&language=en-US');
+        let data = await response.json();
+        let data_genre = [];
+
+        param.forEach(id => {
+            data.genres.forEach(movie => {
+                if(id == movie.id) {
+                    data_genre.push(movie.name);
+                }
+            })
+        })
+        
+        return data_genre;
+    }
+
+    async render() {
         let poster = (this._movie.poster_path ? `${this.imgPath}/${this._movie.poster_path}` : 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQPS91SXO_J_XCdlf8rbrOLyoh3HEAFyrCVzg8co1tuFf_Yb3e1&usqp=CAU');
         
         let vote = this._movie.vote_average.toFixed();
@@ -31,6 +46,13 @@ class MovieItem extends HTMLElement {
             star_rating += ' <span class="rating-filled">&#9734;</span>';
         }
 
+        let data_genre = await this.genre(this._movie.genre_ids);
+        let genre = '';
+        data_genre.forEach(genre_name => {
+            genre += `<span class="badge badge-success">${genre_name}</span> `;
+        })
+
+
         this.shadowDOM.innerHTML = `
            <style>
               ${css}
@@ -43,6 +65,9 @@ class MovieItem extends HTMLElement {
               .movie-card {
                 max-width: 600px; 
                 display: block; 
+              }
+
+              .justify {
                 text-align: justify; 
                 text-justify: inter-word;
               }
@@ -66,14 +91,17 @@ class MovieItem extends HTMLElement {
                     <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">${this._movie.title}</h5>
-                        <p class="card-text">
+                        <p class="card-text text-left">
                             ${star_rating}
                         </p>
-                        <p class="card-text badge badge-primary">
-                            Release Date : ${release_date}
+                        <p class="card-text text-left">
+                            ${genre}
                         </p>
-                        <p class="card-text">
-                            ${this._movie.overview.substring(0, 200)} ...
+                        <p class="card-text text-left">
+                            <span class="badge badge-primary"> Release Date : ${this._movie.release_date.split("-").reverse().join("-")}</span>
+                        </p>
+                        <p class="card-text justify" style="font-size: 14px">
+                            ${this._movie.overview.substring(0, 180)} ...
                         </p>
                         
                     </div>

@@ -31,6 +31,22 @@ class MovieMenu extends HTMLElement {
         this.render();
     }
 
+    get valueNowPlaying() {
+        return this.shadowDOM.querySelector("#now_playing");
+    }
+
+    get valuePopularMovie() {
+        return this.shadowDOM.querySelector("#popular_movie");
+    }
+
+    get valueTopRatedMovie() {
+        return this.shadowDOM.querySelector("#top_rated");
+    }
+
+    get valueUpcomingMovie() {
+        return this.shadowDOM.querySelector("#upcoming");
+    }
+
     render() {
         this.shadowDOM.innerHTML = `
         <style>
@@ -39,8 +55,8 @@ class MovieMenu extends HTMLElement {
         <p>
         
             <nav class="nav nav-pills flex-column flex-sm-row">
-                <a class="flex-sm-fill text-sm-center nav-link active" id="now_playing" onclick="tes();" value="now_playing" href="#">Now Playing</a>
-                <a class="flex-sm-fill text-sm-center nav-link" id="popular_movie" onclick="this.tes();" value="popular" href="#">Popular</a>
+                <a class="flex-sm-fill text-sm-center nav-link active" id="now_playing" value="now_playing" href="#">Now Playing</a>
+                <a class="flex-sm-fill text-sm-center nav-link" id="popular_movie" value="popular" href="#">Popular</a>
                 <a class="flex-sm-fill text-sm-center nav-link" id="top_rated" value="top_rated" href="#">Top Rated</a>
                 <a class="flex-sm-fill text-sm-center nav-link" id="upcoming" value="upcoming" href="#">Upcoming</a>
             </nav>
@@ -53,10 +69,6 @@ class MovieMenu extends HTMLElement {
         this.shadowDOM.querySelector("#top_rated").addEventListener("click", this._clickEventTopRatedMovie);
         this.shadowDOM.querySelector("#upcoming").addEventListener("click", this._clickEventUpcomingMovie);
 
-    }
-
-    tes() {
-        this.shadowDOM.querySelector("#now_playing").classList.remove('active')
     }
 }
 

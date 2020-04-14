@@ -13,6 +13,8 @@ const main = () => {
     const getNowPlayingMovies = async () => {
         try {
             movieListElement.loading();
+            removeActiveClass();
+            movieMenuElement.valueNowPlaying.classList.add('active');
             const response = await fetch(`${movieUrl}/movie/now_playing?api_key=${api_key}`);
             const result = await response.json();
             const data_movie = result.results;
@@ -29,6 +31,8 @@ const main = () => {
     const getPopularMovies = async () => {
         try {
             movieListElement.loading();
+            removeActiveClass();
+            movieMenuElement.valuePopularMovie.classList.add('active');
             const response = await fetch(`${movieUrl}/movie/popular?api_key=${api_key}`);
             const result = await response.json();
             const data_movie = result.results;
@@ -45,6 +49,8 @@ const main = () => {
     const getTopRatedMovies = async () => {
         try {
             movieListElement.loading();
+            removeActiveClass();
+            movieMenuElement.valueTopRatedMovie.classList.add('active');
             const response = await fetch(`${movieUrl}/movie/top_rated?api_key=${api_key}`);
             const result = await response.json();
             const data_movie = result.results;
@@ -61,6 +67,8 @@ const main = () => {
     const getUpcomingMovies = async () => {
         try {
             movieListElement.loading();
+            removeActiveClass();
+            movieMenuElement.valueUpcomingMovie.classList.add('active');
             const response = await fetch(`${movieUrl}/movie/upcoming?api_key=${api_key}`);
             const result = await response.json();
             const data_movie = result.results;
@@ -89,6 +97,13 @@ const main = () => {
             fallbackResult(message)
         }
     };
+
+    const removeActiveClass = () => {
+        movieMenuElement.valueNowPlaying.classList.remove('active');
+        movieMenuElement.valuePopularMovie.classList.remove('active');
+        movieMenuElement.valueTopRatedMovie.classList.remove('active');
+        movieMenuElement.valueUpcomingMovie.classList.remove('active');
+    }
 
     const renderResult =  results => {
         movieListElement.movies = results;

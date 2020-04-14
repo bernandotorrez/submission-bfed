@@ -1,5 +1,5 @@
 {
-  "name": "mysubmission",
+  "name": "Movie-Finder",
   "version": "1.0.0",
   "description": "Exam Belajar Front-End Developer - Bernand D H",
   "main": "app.js",
@@ -8,8 +8,12 @@
     "build-prod": "webpack --config webpack.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Bernand D H",
+  "author": "Bernand D H <mail.bernand@gmail.com>",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bernandotorrez/submission-bfed.git"
+  },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",

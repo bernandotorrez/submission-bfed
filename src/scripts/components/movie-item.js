@@ -23,11 +23,11 @@ class MovieItem extends HTMLElement {
         let remain_vote = max_vote - vote;
 
         let star_rating = '';
-        for (var rating_filled = 0; rating_filled <= vote; rating_filled++) {
+        for (var rating_filled = 0; rating_filled < vote; rating_filled++) {
             star_rating += ' <span class="rating-filled">&#9733;</span>';
         }
 
-        for (var rating_empty = 0; rating_empty <= remain_vote; rating_empty++) {
+        for (var rating_empty = 0; rating_empty < remain_vote; rating_empty++) {
             star_rating += ' <span class="rating-filled">&#9734;</span>';
         }
 

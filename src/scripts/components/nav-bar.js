@@ -15,11 +15,10 @@ class NavBar extends HTMLElement {
     render() {
         this.shadowDOM.innerHTML = `
         <style>
-            ${css}
+            ${css}   
         </style>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary justify-content-center">
-        <a class="navbar-brand" href="#">Movie Finder</a>
-       
+            <a class="navbar-brand" href="#">Movie Finder</a>
         </nav>
        `;
     }

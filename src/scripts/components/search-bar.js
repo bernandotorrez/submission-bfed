@@ -1,3 +1,5 @@
+import css from "bootstrap/dist/css/bootstrap.min.css";
+
 class SearchBar extends HTMLElement {
 
     constructor() {
@@ -28,9 +30,12 @@ class SearchBar extends HTMLElement {
            padding: 16px;
            border-radius: 5px;
            display: flex;
-           position: sticky;
+           position: -webkit-sticky;
+            position: sticky;
            top: 10px;
            background-color: white;
+           z-index: 9999;
+           
        }
       
        .search-container > input {
@@ -60,7 +65,6 @@ class SearchBar extends HTMLElement {
            cursor: pointer;
            margin-left: auto;
            padding: 16px;
-           background-color: cornflowerblue;
            color: white;
            border: 0;
            text-transform: uppercase;
@@ -81,10 +85,12 @@ class SearchBar extends HTMLElement {
                width: 100%;
            }
        }
+
+       ${css}
        </style>
        <div id="search-container" class="search-container">
-           <input placeholder="Search football club" id="searchElement" type="search">
-           <button id="searchButtonElement" type="submit">Search</button>
+           <input placeholder="Search Movie" id="searchElement" type="search">
+           <button class="btn btn-primary" id="searchButtonElement" type="submit">Search</button>
        </div>
        `;
 

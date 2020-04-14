@@ -18,7 +18,7 @@ class AuthorFooter extends HTMLElement {
             ${css}   
         </style>
         <footer class="navbar navbar-expand-lg navbar-dark bg-primary justify-content-center">
-            <a class="navbar-brand" href="#">Movie Finder by <strong>Bernand D H</strong> (mail.bernand@gmail.com)</a>
+            <a class="navbar-brand" href="#"><strong>Bernand D H</strong></a>
         </footer>
        `;
     }

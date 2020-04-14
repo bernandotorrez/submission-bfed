@@ -5,7 +5,7 @@ class MovieItem extends HTMLElement {
     constructor() {
         super();
         this.shadowDOM = this.attachShadow({mode: "open"});
-        this.imgPath = 'http://image.tmdb.org/t/p/w500';
+        this.imgPath = 'https://image.tmdb.org/t/p/w500';
     }
 
     set movie(movie) {

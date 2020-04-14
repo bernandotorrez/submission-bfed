@@ -84,15 +84,24 @@ const main = () => {
 
     const searchMovies = async () => {
         try {
-            movieListElement.loading();
-            const response = await fetch(`${movieUrl}/search/movie/?api_key=${api_key}&query=${searchElement.value}`);
-            const result = await response.json();
-            const data_movie = result.results;
-            if(data_movie.length == 0) {
-                fallbackResult("No Data")
+            if(searchElement.value.value == '') {
+                searchElement.value.classList.remove('is-valid');
+                searchElement.value.classList.add('is-invalid');
             } else {
-                renderResult(data_movie);
+                movieListElement.loading();
+                searchElement.value.classList.remove('is-invalid');
+                searchElement.value.classList.add('is-valid');
+                const response = await fetch(`${movieUrl}/search/movie/?api_key=${api_key}&query=${searchElement.value.value}`);
+                const result = await response.json();
+                const data_movie = result.results;
+                if(data_movie.length == 0) {
+                    fallbackResult("No Data")
+                } else {
+                    renderResult(data_movie);
+                }
             }
+
+            
         } catch(message) {
             fallbackResult(message)
         }

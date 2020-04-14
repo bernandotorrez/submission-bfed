@@ -18,7 +18,7 @@ class SearchBar extends HTMLElement {
 
 
     get value() {
-        return this.shadowDOM.querySelector("#searchElement").value;
+        return this.shadowDOM.querySelector("#searchElement");
     }
 
     render() {
@@ -64,7 +64,6 @@ class SearchBar extends HTMLElement {
            width: 23%;
            cursor: pointer;
            margin-left: auto;
-           padding: 16px;
            color: white;
            border: 0;
            text-transform: uppercase;
@@ -89,8 +88,10 @@ class SearchBar extends HTMLElement {
        ${css}
        </style>
        <div id="search-container" class="search-container">
-           <input placeholder="Search Movie" id="searchElement" type="search">
+           <input placeholder="Search Movie" class="form-control" id="searchElement" type="search">
            <button class="btn btn-primary" id="searchButtonElement" type="submit">Search</button>
+
+          
        </div>
        `;
 

@@ -1,13 +1,16 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
+const {ProgressPlugin} = require('webpack');
+
+const handler = (percentage, message, ...args) => {
+    console.info(`${(percentage * 100).toFixed()}% ${message}`);
+  };
 
 module.exports = {
     entry: "./src/app.js",
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "[chunkhash].bundle.js",
-        //chunkFilename: "[id].js",
-        //chunkLoadTimeout: 30000
+        filename: "[chunkhash].bundle.js"
     },
     module: {
         rules: [
@@ -34,6 +37,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: "./src/index.html",
             filename: "index.html"
-        })
+        }),
+        new ProgressPlugin(handler)
     ]
 }
